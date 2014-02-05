@@ -1,12 +1,12 @@
-require 'database_cleaner'
+require 'database_cleaner' 
  
-RSpec.configure do |config|
+RSpec.configure do |config| 
  
-  DatabaseCleaner.strategy = :truncation
+  DatabaseCleaner.strategy = :truncation 
  
-  config.before :each do
-    Capybara.reset_sessions!
-    DatabaseCleaner.clean
-  end
+  config.before :each do 
+    Capybara.reset_sessions! 
+    DatabaseCleaner.clean 
+  end 
  
 end

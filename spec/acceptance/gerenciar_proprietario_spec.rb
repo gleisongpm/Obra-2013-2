@@ -4,7 +4,7 @@ require 'spec_helper'
 
 feature 'gerenciar proprietario' do
 
-  scenario 'incluir proprietario' do # , :js => true do
+  scenario 'incluir proprietario', :javascript => true  do
 
     visit new_proprietario_path
 
@@ -13,7 +13,7 @@ feature 'gerenciar proprietario' do
 
   end
 
-  scenario 'alterar proprietario' do #, :js => true do
+  scenario 'alterar proprietario' do #, :js => true  do
 
     proprietario = FactoryGirl.create(:proprietario)
 
@@ -25,7 +25,7 @@ feature 'gerenciar proprietario' do
 
   end
 
-   scenario 'excluir proprietario' do #, :javascript => true do
+   scenario 'excluir proprietario' do #, :javascript => true  do
 
        proprietario = FactoryGirl.create(:proprietario)
 
@@ -39,12 +39,13 @@ feature 'gerenciar proprietario' do
 
    def preencher_e_verificar_proprietario
 
-      fill_in 'Nome', :with => "Luiz"
+      fill_in 'Nome',  :with => "Luiz"
       fill_in 'Idade', :with => "40"
       fill_in 'Sexo', :with => "M"
       fill_in 'Rua', :with => "Rua dos Bobos"
       fill_in 'Número', :with => "40"
       fill_in 'Complemento', :with => "casa 77"
+      fill_in 'CPF', :with => "123456789"
  
       click_button 'Salvar'
 
@@ -54,7 +55,9 @@ feature 'gerenciar proprietario' do
       page.should have_content 'Rua: Rua dos Bobos'
       page.should have_content 'Número: 40'
       page.should have_content 'Complemento: casa 77'
+      page.should have_content 'CPF: 123456789'
 
       
 
    end
+end
